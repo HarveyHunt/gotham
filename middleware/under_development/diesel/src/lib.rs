@@ -17,7 +17,6 @@ extern crate gotham_derive;
 #[macro_use]
 extern crate log;
 extern crate r2d2;
-extern crate r2d2_diesel;
 
 pub mod state_data;
 
@@ -32,8 +31,8 @@ use gotham::middleware::{Middleware, NewMiddleware};
 use gotham::state::{request_id, State};
 
 use diesel::Connection;
+use diesel::r2d2::ConnectionManager;
 use r2d2::Pool;
-use r2d2_diesel::ConnectionManager;
 
 use state_data::Diesel;
 
@@ -155,8 +154,8 @@ where
 mod tests {
     use super::*;
 
+    use diesel::r2d2::ConnectionManager;
     use diesel::sqlite::SqliteConnection;
-    use r2d2_diesel::ConnectionManager;
 
     static DATABASE_URL: &'static str = ":memory:";
 

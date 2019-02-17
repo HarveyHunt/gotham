@@ -3,8 +3,8 @@
 
 use diesel::Connection;
 use gotham::state::{FromState, State};
+use diesel::r2d2::ConnectionManager;
 use r2d2::{Error, Pool, PooledConnection};
-use r2d2_diesel::ConnectionManager;
 
 /// Convenience function for usage within 3rd party Middleware and Handlers to obtain a
 /// Diesel connection.
